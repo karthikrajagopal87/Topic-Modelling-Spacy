@@ -37,10 +37,13 @@ if __name__ == '__main__':
         print(i)
 
         # define some parameters 
+
         noisy_pos_tags = ["PROP"]
         min_token_length = 3
 
         stop_words = ('university','professor','teaching')
+        
+        #  named entity recognization
         ents = [e.text for e in document.ents]
     
 
@@ -51,6 +54,7 @@ if __name__ == '__main__':
         a=[]
         for key in counts:
             a.append(key[0])
-
+            
+        # Saving data into TinyDB  
         db = TinyDB('Topic_Modelling.json')
         db.insert({'File_Name': i, 'Topic_Modelled_word': a})
